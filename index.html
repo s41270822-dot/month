@@ -12,25 +12,33 @@ body{background:var(--bg);color:var(--dark);font-family:'Helvetica Neue',Helveti
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display:flex;align-items:center;padding:0 40px;height:56px;}
-.logo{font-size:15px;font-weight:400;color:var(--dark);letter-spacing:0.01em;margin-right:48px;white-space:nowrap;}
+.logo{font-size:15px;font-weight:400;color:var(--dark);letter-spacing:0.01em;white-space:nowrap;flex-shrink:0;}
 .logo strong{font-weight:700;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links{display:flex;gap:2rem;list-style:none;position:absolute;left:0;right:0;justify-content:center;pointer-events:none;}
+.nav-links li{pointer-events:all;}
 .nav-links a{text-decoration:none;color:var(--dark);font-size:13px;letter-spacing:0.04em;transition:opacity .15s;}
 .nav-links a:hover{opacity:0.45;}
-.nav-sns{display:flex;gap:1.2rem;margin-left:auto;}
+.nav-sns{display:flex;gap:1.2rem;margin-left:auto;flex-shrink:0;}
 .nav-sns a{text-decoration:none;color:var(--gray);font-size:12px;transition:opacity .15s;}
 .nav-sns a:hover{opacity:0.5;}
 
 /* HERO */
 #hero{height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 40px 56px;}
+.hero-top{display:flex;justify-content:flex-start;align-items:flex-start;padding-top:80px;}
+.hero-eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);}
+.hero-mid{flex:1;display:flex;align-items:center;justify-content:center;}
 .hero-logo-img{width:55%;max-width:820px;mix-blend-mode:multiply;display:block;margin-left:-20px;}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;}
+.hero-sub{font-size:13px;color:var(--gray);max-width:280px;line-height:1.8;}
+.hero-cta{font-size:13px;color:var(--dark);text-decoration:none;border-bottom:1px solid var(--dark);padding-bottom:2px;transition:color .15s,border-color .15s;}
+.hero-cta:hover{color:var(--dark);opacity:0.6;}
 
 /* WORK */
 #work{padding:100px 40px 0;}
 .section-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:40px;}
 .section-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);}
 
-.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 24px;}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
 .work-card{cursor:pointer;}
 .work-thumb{position:relative;width:100%;aspect-ratio:16/10;background:#e4e3db;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .work-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -38,7 +46,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .work-thumb-placeholder svg{width:28px;height:28px;opacity:0.5;}
 .work-thumb-placeholder span{font-size:11px;letter-spacing:0.05em;}
 .work-thumb input{display:none;}
-.work-caption{margin-top:14px;font-size:13px;letter-spacing:0.03em;color:var(--dark);text-transform:uppercase;}
+.work-overlay{position:absolute;inset:0;background:rgba(30,30,26,0);display:flex;align-items:center;justify-content:center;transition:background .25s;pointer-events:none;}
+.work-card:hover .work-overlay{background:rgba(30,30,26,0.45);}
+.work-overlay span{color:#fff;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:all .25s;}
+.work-card:hover .work-overlay span{opacity:1;transform:translateY(0);}
 
 /* ABOUT */
 #about{padding:120px 40px;}
@@ -46,41 +57,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .about-left .lbl{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:40px;display:block;}
 .about-left h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;}
 .about-right p{font-size:16px;color:#555;line-height:1.85;margin-bottom:1.2rem;}
-.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px;padding-top:40px;border-top:1px solid var(--border);grid-column:span 2;}
-.stat-item .num{font-size:2.6rem;font-weight:700;color:var(--dark);line-height:1;}
-.stat-item .desc{font-size:11px;color:var(--gray);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase;}
-
-/* SERVICES */
-#services{padding:0 40px 120px;}
-.services-title-row{padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.service-row{display:grid;grid-template-columns:40px 220px 1fr 100px;align-items:start;padding:28px 0;border-bottom:1px solid var(--border);}
-.svc-num{font-size:11px;color:var(--gray);padding-top:3px;}
-.svc-name{font-size:16px;font-weight:500;}
-.svc-desc{font-size:13px;color:var(--gray);line-height:1.75;max-width:400px;}
-.svc-tag{font-size:11px;color:var(--gray);text-align:right;letter-spacing:0.06em;text-transform:uppercase;padding-top:3px;}
-
-/* CONTACT */
-#contact{background:#fff;padding:120px 40px;}
-.contact-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:80px;}
-.contact-heading{font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-0.04em;line-height:1.1;}
-.contact-info{text-align:right;}
-.contact-info p{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
-.contact-info a,.contact-info span{font-size:14px;color:var(--dark);text-decoration:none;display:block;line-height:2;}
-.contact-info a:hover{opacity:0.5;}
-.contact-form{border-top:1px solid var(--border);padding-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
-.form-field{display:flex;flex-direction:column;gap:8px;}
-.form-field label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);}
-.form-field input,.form-field textarea{background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:14px;color:var(--dark);font-family:inherit;outline:none;transition:border-color .2s;}
-.form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--dark);}
-.form-field textarea{resize:none;height:88px;}
-.form-field.full{grid-column:span 2;}
-.form-submit{grid-column:span 2;justify-self:start;margin-top:8px;background:var(--dark);color:#fff;border:none;padding:13px 32px;font-size:11px;font-weight:500;letter-spacing:0.12em;cursor:pointer;transition:opacity .2s;text-transform:uppercase;}
-.form-submit:hover{opacity:0.7;}
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;}
 .footer-logo{font-size:13px;font-weight:700;color:var(--dark);}
-.footer-copy{font-size:11px;color:var(--gray);text-align:center;}
+.footer-info{font-size:11px;color:var(--gray);text-align:center;line-height:1.8;}
+.footer-info a{color:var(--gray);text-decoration:none;}
+.footer-info a:hover{opacity:0.6;}
 .footer-links{display:flex;gap:20px;justify-content:flex-end;}
 .footer-links a{font-size:11px;color:var(--gray);text-decoration:none;transition:opacity .15s;}
 .footer-links a:hover{opacity:0.5;}
@@ -88,16 +71,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
 @media(max-width:768px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
-  #hero,#work,#about,#services,#contact,footer{padding-left:20px;padding-right:20px;}
-  .hero-title{font-size:clamp(4rem,18vw,7rem);}
+  #hero,#work,#about,footer{padding-left:20px;padding-right:20px;}
+  .hero-logo-img{width:75%;}
+  .work-grid{grid-template-columns:1fr;gap:0;}
   .about-grid{grid-template-columns:1fr;}
-  .about-stats{grid-column:1;grid-template-columns:1fr 1fr;}
-  .service-row{grid-template-columns:28px 1fr;row-gap:6px;}
-  .svc-desc,.svc-tag{grid-column:2;}
-  .contact-top{flex-direction:column;gap:40px;}
-  .contact-info{text-align:left;}
-  .contact-form{grid-template-columns:1fr;}
-  .form-field.full,.form-submit{grid-column:1;}
   footer{grid-template-columns:1fr 1fr;}
   .footer-copy{display:none;}
 }
@@ -114,14 +91,23 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
   </ul>
   <div class="nav-sns">
     <a href="#">ins.</a>
-    <a href="#">beh.</a>
-    <a href="#">lin.</a>
+    <a href="https://www.behance.net/6870b70a" target="_blank">beh.</a>
+    <a href="https://vimeo.com/user161968144" target="_blank">vim.</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <img class="hero-logo-img" src="Mosik_LOGO.png" alt="Mosik."/>
+  <div class="hero-top">
+    <p class="hero-eyebrow">Design Studio — Seoul, Korea</p>
+  </div>
+  <div class="hero-mid">
+    <img class="hero-logo-img" src="Mosik_LOGO.png" alt="Mosik."/>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-sub">브랜드의 본질을 시각 언어로 번역합니다. 전략적 사고와 감각적 디자인의 교차점.</p>
+    <a href="#work" class="hero-cta">View our work →</a>
+  </div>
 </section>
 
 <!-- WORK -->
@@ -137,8 +123,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
+        <div class="work-overlay"><span>ARC Beauty Lab</span></div>
       </label>
-      <p class="work-caption">ARC Beauty Lab</p>
     </div>
     <div class="work-card" data-idx="1">
       <label class="work-thumb">
@@ -147,8 +133,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
+        <div class="work-overlay"><span>KAYA Skincare</span></div>
       </label>
-      <p class="work-caption">KAYA Skincare</p>
     </div>
     <div class="work-card" data-idx="2">
       <label class="work-thumb">
@@ -157,8 +143,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
+        <div class="work-overlay"><span>Folio Magazine</span></div>
       </label>
-      <p class="work-caption">Folio Magazine</p>
     </div>
     <div class="work-card" data-idx="3">
       <label class="work-thumb">
@@ -167,8 +153,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
+        <div class="work-overlay"><span>Triad Fund</span></div>
       </label>
-      <p class="work-caption">Triad Fund</p>
     </div>
     <div class="work-card" data-idx="4">
       <label class="work-thumb">
@@ -177,8 +163,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
+        <div class="work-overlay"><span>Grid Gallery</span></div>
       </label>
-      <p class="work-caption">Grid Gallery</p>
     </div>
     <div class="work-card" data-idx="5">
       <label class="work-thumb">
@@ -187,8 +173,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
+        <div class="work-overlay"><span>Noma Branding</span></div>
       </label>
-      <p class="work-caption">Noma Branding</p>
     </div>
   </div>
 </section>
@@ -205,19 +191,17 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
       <p>단순함 속에 힘이 있다고 믿습니다. 불필요한 것을 걷어내고 핵심만 남겼을 때 진짜 디자인이 시작됩니다.</p>
       <p>서울을 기반으로 전 세계 클라이언트와 협업합니다.</p>
     </div>
-
   </div>
 </section>
 
-
-
-
-
 <footer>
   <div class="footer-logo">STUDIO Mosik.</div>
-  <div class="footer-copy">© 2025 month studio. All rights reserved.</div>
+  <div class="footer-info">
+    서울특별시 · 010-4127-0822<br>
+    © 2025 Mosik studio. All rights reserved.
+  </div>
   <div class="footer-links">
-    <a href="#">ins.</a>
+    <a href="https://www.instagram.com/__mosik/" target="_blank">ins.</a>
     <a href="#">beh.</a>
     <a href="#">lin.</a>
   </div>
@@ -231,7 +215,8 @@ document.querySelectorAll('.work-upload').forEach(input => {
     const reader = new FileReader();
     reader.onload = (ev) => {
       const thumb = input.closest('.work-thumb');
-      thumb.innerHTML = `<img src="${ev.target.result}" alt="work image"/>`;
+      const overlay = thumb.querySelector('.work-overlay').outerHTML;
+      thumb.innerHTML = `<img src="${ev.target.result}" alt="work image"/>` + overlay;
     };
     reader.readAsDataURL(file);
   });
