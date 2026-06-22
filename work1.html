@@ -19,14 +19,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .nav-back:hover{opacity:0.5;}
 
 /* HERO */
-#hero{height:100vh;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:60px;overflow:hidden;background:#e4e3db;}
+#hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1e1e1e;}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-.hero-overlay{position:absolute;inset:0;background:rgba(20,20,20,0.45);}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,20,20,0.55);}
 .hero-date{position:absolute;top:80px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:0.2em;color:rgba(255,255,255,0.7);text-align:center;}
 .hero-text{position:relative;z-index:1;text-align:center;}
-.hero-title{font-size:clamp(2rem,6vw,5rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.1;margin-bottom:16px;}
+.hero-title{font-size:clamp(2.5rem,7vw,6rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
 .hero-client{font-size:13px;letter-spacing:0.2em;color:rgba(255,255,255,0.7);text-transform:uppercase;}
-.hero-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;letter-spacing:0.05em;}
 
 /* DESCRIPTION */
 #description{padding:100px 40px;}
@@ -72,12 +71,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 <!-- NAV -->
 <nav>
   <a href="index.html" class="logo">STUDIO <strong>Mosik.</strong></a>
-  <a href="index.html" class="nav-back">← Back to list</a>
+  <a href="index.html#work" class="nav-back">← Back to list</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-placeholder">이미지를 추가해주세요</div>
+  <img class="hero-bg" src="Gemini_Generated_Image_ur8m0lur8m0lur8m.png" alt="hero"/>
   <div class="hero-overlay"></div>
   <p class="hero-date">2024</p>
   <div class="hero-text">
@@ -149,7 +148,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <a href="#" class="btn-arrow">←</a>
-  <a href="index.html" class="btn-list">List</a>
+  <a href="index.html#work" class="btn-list">List</a>
   <a href="#" class="btn-arrow">→</a>
 </div>
 
